@@ -1,27 +1,33 @@
-#ifndef GROUP_H
-#define GROUP_H
+#ifndef POINT_H
+#define POINT_H
 #include <iostream>
 #include <string>
-class Point {
-    private: 
-        double x;
-        double y;
+
+using namespace std;
+
+class Point{
+private:
+    double x;
+    double y;
+public:
+    Point(double x, double y);
+
+    Point(const Point &other);
+
+    bool equals(const Point &other);
+
+    double getX();
+
+    double getY();
+
+    void flip();
+
+    void move(double x, double y);
+
+    string toString();
+
+    double distanceTo(const Point &other);
+
     
-    public:
-
-        Point(double x, double y);
-
-        bool equals(Point &other);
-
-        double getX();
-
-        double getY();
-
-        void flip();
-
-        void move(double x, double y);
-
-        std::string toString();
-
 };
 #endif

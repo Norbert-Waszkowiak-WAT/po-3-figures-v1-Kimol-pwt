@@ -1,37 +1,37 @@
 #include "point.h"
-#include <string>
+#include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <cmath>
 
-Point::Point(double x, double y)
-: x(x), y(y) {};
-
-double Point::getY(){
-    return y;
-};
+Point :: Point (double x, double y) : x(x), y(y){};
+Point :: Point (const Point &other) : x(other.x), y(other.y){};
 
 double Point::getX(){
     return x;
-}
-
-bool Point::equals(Point &other){
-    return other.getX() == x && other.getY() == y;
-}
-
+};
+double Point::getY(){
+    return y;
+};
+bool Point::equals(const Point &other){
+    return other.x == x && other.y == y;
+};
 void Point::flip(){
-    x = x * (-1);
-    y = y * (-1);
-}
-
-void Point::move(double x1, double y1){
-    x = x+x1;
-    y = y+y1;
-}
-
-std::string Point::toString() {
-    std::ostringstream oss;
-    oss << std::fixed << std::setprecision(1);
-    oss << "Point(" << x << ", " << y << ")";
-    return oss.str();
-}
-
+    x*=-1;
+    y*=-1;
+};
+void Point::move(double x, double y){
+    this->x+=x;
+    this->y+=y;
+};
+string Point::toString(){
+        ostringstream oss;
+        oss<<fixed<<setprecision(1);
+        oss<<"Point(" << x << ", " << y << ")";
+        return oss.str();
+};
+double Point::distanceTo(const Point &other) {
+    double dx = x - other.x;
+    double dy = y - other.y;
+    return sqrt(dx * dx + dy * dy);
+};

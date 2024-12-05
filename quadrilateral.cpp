@@ -1,48 +1,41 @@
-#include "quadrilateral.h"
-#include <sstream>
-#include <iomanip>
 #include <cmath>
-#include <iostream>
 
-Quadrilateral :: Quadrilateral(Point a, Point b, Point c, Point d)
-: a(a), b(b), c(c), d(d){};
+#include "quadrilateral.h"
+#include "point.h"
 
-Quadrilateral :: Quadrilateral(Quadrilateral &other)
-: a(other.a), b(other.b), c(other.c), d(other.d){};
+Quadrilateral::Quadrilateral(Point a, Point b, Point c, Point d) : a(a), b(b), c(c), d(d) {}
 
-bool Quadrilateral :: equals(Quadrilateral &other){
-    return a.equals(other.a) && b.equals(other.b) && c.equals(other.c) && d.equals(other.d);
-}
+Quadrilateral::Quadrilateral(const Quadrilateral &other) : a(other.a), b(other.b), c(other.c), d(other.d) {}
 
-void Quadrilateral :: flip(){
+void Quadrilateral::flip() {
     a.flip();
     b.flip();
     c.flip();
     d.flip();
 }
 
-void Quadrilateral :: move(double x, double y){
+void Quadrilateral::move(double x, double y) {
     a.move(x, y);
     b.move(x, y);
     c.move(x, y);
     d.move(x, y);
 }
 
-double Quadrilateral :: getSurface(){
-    double ab = a.distanceTo(b);
-    double bc = b.distanceTo(c);
-    double cd = c.distanceTo(d);
-    double da = d.distanceTo(a);
+std::string Quadrilateral::toString() {
+    return "Quadrilateral(" + a.toString() + ", " + b.toString() + ", " + c.toString() + ", " + d.toString() + ")";
+}
 
-    double s = (ab + bc + cd + da) / 2.0;
+double Quadrilateral::getSurface() {
+    double x1 = a.getX(), y1 = a.getY();
+    double x2 = b.getX(), y2 = b.getY();
+    double x3 = c.getX(), y3 = c.getY();
+    double x4 = d.getX(), y4 = d.getY();
 
-    double area = sqrt((s - ab) * (s - bc) * (s - cd) * (s - da));
-
+    // Shoelace formula for quadrilateral
+    double area = 0.5 * fabs(x1*y2 + x2*y3 + x3*y4 + x4*y1 - y1*x2 - y2*x3 - y3*x4 - y4*x1);
     return area;
 }
 
-string Quadrilateral :: toString(){
-    std :: ostringstream oss;
-    oss << "Quadrilateral(" << a.toString() << ", " << b.toString() << ", " << c.toString() << ", " << d.toString() << ")";
-    return oss.str();
+bool Quadrilateral::equals(Quadrilateral &other) {
+    return a.equals(other.a) && b.equals(other.b) && c.equals(other.c) && d.equals(other.d);
 }

@@ -1,8 +1,8 @@
-#ifndef LINE_H
-#define LINE_H
-#include <iostream>
-#include <string>
+#ifndef PO_LAB3_FIGURES_LINE_H
+#define PO_LAB3_FIGURES_LINE_H
+
 #include "point.h"
+
 
 class Line {
 private:
@@ -10,12 +10,18 @@ private:
     Point b;
 public:
     Line(Point a, Point b);
+
     Line(const Line &other);
-    bool equals(const Line &other);
+
+    bool equals(Line &other);
+
     void flip();
+
     void move(double x, double y);
-    string toString();
-    
+
+    std::string toString();
 
 };
+
+
 #endif

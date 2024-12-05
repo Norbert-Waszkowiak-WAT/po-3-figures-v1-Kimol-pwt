@@ -1,23 +1,30 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
-#include <iostream>
-#include <string>
-#include "line.h"
+#ifndef PO_LAB3_FIGURES_TRIANGLE_H
+#define PO_LAB3_FIGURES_TRIANGLE_H
+
 #include "point.h"
 
-
-class Triangle{
-private: 
+class Triangle {
+private:
     Point a;
     Point b;
     Point c;
+
 public:
     Triangle(Point a, Point b, Point c);
-    Triangle(Triangle &other);
+
+    Triangle(const Triangle &other);
+
     bool equals(Triangle &other);
+
     void flip();
+
     void move(double x, double y);
+
+    std::string toString();
+
     double getSurface();
-    string toString();
+
 };
+
+
 #endif

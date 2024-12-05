@@ -1,11 +1,10 @@
-#ifndef POINT_H
-#define POINT_H
-#include <iostream>
+#ifndef PO_LAB3_FIGURES_POINT_H
+#define PO_LAB3_FIGURES_POINT_H
+
 #include <string>
 
-using namespace std;
 
-class Point{
+class Point {
 private:
     double x;
     double y;
@@ -14,20 +13,18 @@ public:
 
     Point(const Point &other);
 
-    bool equals(const Point &other);
-
-    double getX();
-
-    double getY();
+    bool equals(Point &other);
 
     void flip();
 
     void move(double x, double y);
 
-    string toString();
+    std::string toString();
 
-    double distanceTo(const Point &other);
+    double const getX();
 
-    
+    double const getY();
 };
-#endif
+
+
+#endif //PO_LAB3_FIGURES_POINT_H

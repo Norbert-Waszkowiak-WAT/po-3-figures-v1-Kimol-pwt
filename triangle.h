@@ -1,5 +1,5 @@
-#ifndef PO_LAB3_FIGURES_TRIANGLE_H
-#define PO_LAB3_FIGURES_TRIANGLE_H
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
 
 #include "point.h"
 
@@ -11,20 +11,12 @@ private:
 
 public:
     Triangle(Point a, Point b, Point c);
-
     Triangle(const Triangle &other);
-
     bool equals(Triangle &other);
-
     void flip();
-
     void move(double x, double y);
-
     std::string toString();
-
     double getSurface();
-
 };
-
 
 #endif
